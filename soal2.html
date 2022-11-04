@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <title>Pioneer - Main Page</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="img/logo/logo.jpg" rel="icon" />
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="vendor/aos/aos.css" rel="stylesheet" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>Document</title>
+  </head>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo fw-bold">
+        <a href="index.html"><img src="img/logo/logo.jpg" alt="" /> Pioneer</a>
+      </h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="main.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="soal1.html">Soal 1</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li>
+            <a class="nav-link scrollto o" href="soal2.html">Soal 2</a>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li>
+            <a class="getstarted scrollto" href="#about">Daftar</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header>
+  <body class="">
+    <div class="mx-5" style="margin-top: 6em">
+      <h2>Form Toko Hafizi</h2>
+      <form name="form">
+        <label>Nama</label>
+        <input type="text" name="input_nama" size="10" />
+        <br />
+        <label>Barang</label>
+        <select name="input_barang" onchange="munculhargabarang()">
+          <option value="Amerika">--Pilih--</option>
+          <option value="Celana">Celana</option>
+          <option value="Kaos">Kaos</option>
+          <option value="Jaket">Jaket</option>
+        </select>
+        <label>Harga</label>
+        <input type="text" name="output_hargabarang" size="10" />
+        <br />
+        <label>Jumlah</label>
+        <input type="text" name="input_jumlahbarang" size="10" />
+        <br />
+        <input
+          type="button"
+          class="btn btn-primary m-3"
+          Onclick="totalharga()"
+          value="Hitung"
+        />
+        <input type="reset" class="btn btn-danger m-3" value="Clear" />
+        <br />
+        <label>Total Harga</label>
+        <input type="text" name="output_totalharga" size="10" />
+        <label>Diskon</label>
+        <input
+          type="text"
+          name="output_diskon"
+          onchange="munculDiskon()"
+          size="10"
+        />
+        <br />
+        <label>Bayar</label>
+        <input type="text" name="input_bayar" size="10" />
+        <br />
+        <input
+          type="button"
+          class="btn btn-primary m-3"
+          Onclick="totalBayar()"
+          value="Bayar"
+        />
+        <br />
+        <label>Kembalian</label>
+        <input type="text" name="output_totalbayar" size="10" />
+      </form>
+    </div>
+    <script type="text/javascript">
+      function munculhargabarang() {
+        var barang = document.form.input_barang.value;
+
+        if (barang == "Celana") {
+          hargabarang = 100000;
+        } else if (barang == "Kaos") {
+          hargabarang = 70000;
+        } else if (barang == "Jaket") {
+          hargabarang = 200000;
+        }
+        document.form.output_hargabarang.value = eval(hargabarang);
+      }
+      function totalharga() {
+        var jumlahbarang = document.form.input_jumlahbarang.value;
+        document.form.output_totalharga.value =
+          eval(jumlahbarang) * +eval(document.form.output_hargabarang.value);
+      }
+      function munculDiskon(totalharga) {
+        var totalharga = document.form.output_totalharga;
+        if (totalharga >= 252000) {
+          diskon = (totalharga * 11) / 100;
+        } else if (totalharga >= 439000) {
+          diskon = (totalharga * 21) / 100;
+        } else if (totalharga >= 640000) {
+          diskon = (totalharga * 31) / 100;
+        }
+        document.form.output_diskon.value = eval(diskon);
+      }
+      function totalBayar() {
+        var bayar = document.form.input_bayar.value;
+        document.form.output_totalbayar.value =
+          eval(bayar) - +eval(document.form.output_totalbayar);
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Pioneer</h3>
+              <p>
+                Jalan Diponegoro No 15 <br />
+                Kota Mojokerjo, JawaTimur<br />
+                Indonesia <br /><br />
+                <strong>Phone:</strong> 0341 323244<br />
+                <strong>Email:</strong> pioneer@gmail.com.com<br />
+              </p>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Services</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Terms of service</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Mobile Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Game Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Dekstop Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>
+                  <a href="#">Artificial Intelligenece</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Pioneer</span></strong
+            >. All Rights Reserved
+          </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
